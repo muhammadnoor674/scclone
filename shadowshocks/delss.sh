@@ -28,33 +28,38 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
 
 	clear
 	echo ""
-	echo "Select the existing client you want to renew"
+	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo -e "==============================="
+	echo " ==============================="
+	echo "     No  Expired   User"
 	grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
+			read -rp "Pilih salah satu[1]: " CLIENT_NUMBER
 		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+			read -rp "Pilih salah satu [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-read -p "Expired (Days): " masaaktif
+# match the selected number to a client name
+CLIENT_NAME=$(grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2-3 | sed -n "${CLIENT_NUMBER}"p)
 user=$(grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 exp=$(grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
-now=$(date +%Y-%m-%d)
-d1=$(date -d "$exp" +%s)
-d2=$(date -d "$now" +%s)
-exp2=$(( (d1 - d2) / 86400 ))
-exp3=$(($exp2 + $masaaktif))
-exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-sed -i "s/### $user $exp/### $user $exp4/g" /etc/shadowsocks-libev/akun.conf
+# remove [Peer] block matching $CLIENT_NAME
+sed -i "/^### $user $exp/,/^port_http/d" "/etc/shadowsocks-libev/akun.conf"
+# remove generated client file
+service cron restart
+systemctl disable shadowsocks-libev-server@$user-tls.service
+systemctl disable shadowsocks-libev-server@$user-http.service
+systemctl stop shadowsocks-libev-server@$user-tls.service
+systemctl stop shadowsocks-libev-server@$user-http.service
+rm -f "/etc/shadowsocks-libev/$user-tls.json"
+rm -f "/etc/shadowsocks-libev/$user-http.json"
 clear
 echo ""
 echo "==========================="
-echo "  SS OBFS Account Renewed  "
+echo "  SS OBFS Account Deleted  "
 echo "==========================="
 echo "Username  : $user"
-echo "Expired   : $exp4"
+echo "Expired   : $exp"
 echo "==========================="
 echo "Script By FREE FINDER"
