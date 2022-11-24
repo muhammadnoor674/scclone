@@ -19,25 +19,25 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Link Hosting Kalian Untuk Ssh Vpn
-akbarvpn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/ssh"
+akbarvpn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/ssh"
 # Link Hosting Kalian Untuk Sstp
-akbarvpnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/sstp"
+akbarvpnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/sstp"
 # Link Hosting Kalian Untuk Ssr
-akbarvpnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/ssr"
+akbarvpnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/ssr"
 # Link Hosting Kalian Untuk Shadowsocks
-akbarvpnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/shadowsocks"
+akbarvpnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/shadowsocks"
 # Link Hosting Kalian Untuk Wireguard
-akbarvpnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/wireguard"
+akbarvpnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/wireguard"
 # Link Hosting Kalian Untuk Xray
-akbarvpnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/xray"
+akbarvpnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/xray"
 # Link Hosting Kalian Untuk Ipsec
-akbarvpnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/ipsec"
+akbarvpnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/ipsec"
 # Link Hosting Kalian Untuk Backup
-akbarvpnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/backup"
+akbarvpnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/backup"
 # Link Hosting Kalian Untuk Websocket
-akbarvpnnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/websocket"
+akbarvpnnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/websocket"
 # Link Hosting Kalian Untuk Ohp
-akbarvpnnnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/ipuk/ohp"
+akbarvpnnnnnnnnnn="raw.githubusercontent.com/muhammadnoor674/sc/anuy/ohp"
 
 # Getting
 echo -e ""
